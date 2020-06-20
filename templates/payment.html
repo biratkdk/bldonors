@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta property="og:title" content="Bldonors Payment">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>
+            Bldonors Payment
+        </title>
+         {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+  <body>
+  <section class="sub-header">
+      <nav>
+          <a href="/"><img src="{% static 'images/logo2.png' %}"></a>
+          <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/donor">Donor</a></li>
+                <li><a href="/bloodreq">Request</a></li>
+                <li><a href="/stock">Stock</a></li>
+                <li><a href="/payment">Payment</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+          </div>
+          <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+<h1>Support Payment</h1>
+  </section>
+
+<section class="donor-content">
+    <div class="row">
+       <div class="donor-left">
+         <h4 class="text-center alert alert-info"> Support Bldonors</h4>
+         {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+         {% endif %}
+          <form action="/payment" method="POST" class="comment-form">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="hero-btn red-btn">Save Payment</button>
+          </form>
+         </div>
+          <div class="col-sm-8 ">
+      <h4 class="text-center alert alert-info">Recent Payment Details</h4>
+      {% if recent_payments %}
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Purpose</th>
+              <th scope="col">Method</th>
+              <th scope="col">Status</th>
+              <th scope="col">Transaction ID</th>
+            </tr>
+          </thead>
+          <tbody>
+                {% for item in recent_payments %}
+                  <tr>
+                    <td>{{ item.donor_name }}</td>
+                    <td>{{ item.amount }}</td>
+                    <td>{{ item.purpose }}</td>
+                    <td>{{ item.payment_method }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>{{ item.transaction_id }}</td>
+                  </tr>
+                {% endfor %}
+          </tbody>
+        </table>
+        {% else  %}
+        <h4>No payment records available</h4>
+      {% endif %}
+    </div>
+    </div>
+</section>
+
+<section class="footer">
+    <h4>About Us</h4>
+    <p>Bldonors is an innovative approach to address global health. We provide immediate access to blood donors all over Nepal, 24 hours a day, 7 days a week!</p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-envelope"></i>
+    </div>
+    <p> Bldonors Foundation, Inc 
+        Made with <i class="fa fa-heart-o"></i> by Birat Khadka 
+        <i class="fab">@2020-2021 |</i>
+</section>
+
+ <script>
+      var navLinks =  document.getElementById("navLinks");
+      function showMenu(){
+          navLinks.style.right = "0";
+      }
+      function hideMenu(){
+          navLinks.style.right = "-200px";
+      }
+ </script>
+</body>
+</html>
