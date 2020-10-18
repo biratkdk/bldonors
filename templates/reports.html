@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta property="og:title" content="Bldonors Reports">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>
+            Bldonors Reports
+        </title>
+         {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+  <body>
+  <section class="sub-header">
+      <nav>
+          <a href="/"><img src="{% static 'images/logo2.png' %}"></a>
+          <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/donor">Donor</a></li>
+                <li><a href="/bloodreq">Request</a></li>
+                <li><a href="/stock">Stock</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+          </div>
+          <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+      <h1>Reports Dashboard</h1>
+  </section>
+
+<section class="donor-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-right" style="margin-bottom: 20px;">
+                <a href="{% url 'export_reports_csv' %}" class="btn btn-success">Download CSV</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="alert alert-danger text-center">
+                    <h4>Total Donors</h4>
+                    <h2 id="donor-total">{{ donor_total }}</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="alert alert-info text-center">
+                    <h4>Total Requests</h4>
+                    <h2 id="request-total">{{ request_total }}</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="alert alert-warning text-center">
+                    <h4>Stock Entries</h4>
+                    <h2 id="stock-total">{{ stock_total }}</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="alert alert-success text-center">
+                    <h4>Units Available</h4>
+                    <h2 id="total-units">{{ total_units }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-sm-6">
+                <div class="alert alert-success text-center">
+                    <h4>Total Payments</h4>
+                    <h2 id="payment-total">{{ payment_total }}</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="alert alert-warning text-center">
+                    <h4>Total Amount Received</h4>
+                    <h2 id="amount-total">{{ total_amount_received }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-sm-6">
+                <h4 class="text-center alert alert-info">Donors By Blood Group</h4>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Blood Group</th>
+                            <th>Total Donors</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in donor_by_group %}
+                        <tr>
+                            <td>{{ item.blood_group }}</td>
+                            <td>{{ item.total }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">No donor data available</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <h4 class="text-center alert alert-info">Requests By Blood Group</h4>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Blood Group</th>
+                            <th>Total Requests</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in request_by_group %}
+                        <tr>
+                            <td>{{ item.blood_group }}</td>
+                            <td>{{ item.total }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">No request data available</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-sm-6">
+                <h4 class="text-center alert alert-info">Stock Units By Blood Group</h4>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Blood Group</th>
+                            <th>Total Units</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in stock_by_group %}
+                        <tr>
+                            <td>{{ item.blood_group }}</td>
+                            <td>{{ item.total_units }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">No stock data available</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <h4 class="text-center alert alert-danger">Low Stock Alert List</h4>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Blood Group</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="low-stock-body">
+                        {% for item in low_stock_items %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.blood_group }}</td>
+                            <td>{{ item.quantity }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">No low stock records available</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer">
+    <h4>About Us</h4>
+    <p>Bldonors is an innovative approach to address global health. We provide immediate access to blood donors all over Nepal, 24 hours a day, 7 days a week.</p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-envelope"></i>
+    </div>
+    <p> Bldonors Foundation, Inc 
+        Made with <i class="fa fa-heart-o"></i> by Birat Khadka 
+        <i class="fab">@2020-2021 |</i>
+</section>
+
+ <script>
+      var navLinks =  document.getElementById("navLinks");
+      function showMenu(){
+          navLinks.style.right = "0";
+      }
+      function hideMenu(){
+          navLinks.style.right = "-200px";
+      }
+
+      function renderLowStock(items) {
+          var tableBody = $("#low-stock-body");
+          tableBody.empty();
+
+          if (!items.length) {
+              tableBody.append("<tr><td colspan='3'>No low stock records available</td></tr>");
+              return;
+          }
+
+          for (var i = 0; i < items.length; i++) {
+              tableBody.append(
+                  "<tr><td>" + items[i].name + "</td><td>" + items[i].blood_group + "</td><td>" + items[i].quantity + "</td></tr>"
+              );
+          }
+      }
+
+      function refreshDashboard() {
+          $.ajax({
+              url: "{% url 'live_report_data' %}",
+              type: "GET",
+              success: function(response) {
+                  if (response.status === "success") {
+                      $("#donor-total").text(response.data.donor_total);
+                      $("#request-total").text(response.data.request_total);
+                      $("#stock-total").text(response.data.stock_total);
+                      $("#total-units").text(response.data.total_units);
+                      $("#payment-total").text(response.data.payment_total);
+                      $("#amount-total").text(response.data.total_amount_received);
+                      renderLowStock(response.data.low_stock_items);
+                  }
+              }
+          });
+      }
+
+      setInterval(refreshDashboard, 10000);
+ </script>
+</body>
+</html>
