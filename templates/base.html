@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta property="og:title" content="Bldonors">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>
+            Bldonor 
+        </title>
+        {% load static %}
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/static/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/static/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/static/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/static/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/static/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/static/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/static/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/static/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+<link rel="manifest" href="/static/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/static/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+    </head>
+
+  <body>
+  <section class="header">
+      <nav>
+          <a href="/"><img src="../static/images/logo2.png"></a>
+          <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+              <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/donor">Donor</a></li>
+                  <li><a href="/bloodreq">Request</a></li>
+                  <li> <a href="/stock">Stock</a></li>
+                  <li><a href="/blog">Blog</a></li>
+                  <li><a href="/about">About</a></li>
+                  <li><a href="/contact">Contact Us</a></li>
+              </ul>
+          </div>
+          <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+  <div class="text-box">
+      <h1>Eliminate blood scarcity in NEPAL</h1>
+     <p>By donating your time to make an impact, your blood to save lives or your money to create a holistic blood management cycle.</p>
+     <a href="/donor" class="hero-btn">Donate Blood</a>
+     <a href="/bloodreq" class="hero-btn">Request Blood</a>
+  </div>
+  </section>
+
+
+
+  <!---2nd section about ours-->
+  <section class="course">
+<h1>What We Do? </h1>
+<p>With the right donor data management and blood stock management, Bldonors works closely with blood banks to maintain their information and also recruit, engage and retain donors as per the demand</p>
+
+<div class="row">
+    <div class="course-col">
+        <h3>Digitization</h3>
+        <p>Track blood supply chain history</p>
+    </div>
+    <div class="course-col">
+        <h3>Motivate donors</h3>
+        <p>Motivate people to register for blood donation</p>
+    </div>
+    <div class="course-col">
+        <h3>Donor Database</h3>
+        <p>Create Nation wide donor database</p>
+    </div>
+</div>
+  </section>
+
+
+
+  <!----Campus section-->
+<section class="campus">
+    <h1>Our Events</h1>
+    <p>With the help of ours team many programs were conducted in different places</p>
+    <div class="row">
+        <div class="campus-col">
+            <img src="../static/images/event1.jpg">
+            <div class="layer">
+                <h3>Kathmandu</h3>
+            </div>
+        </div>
+        <div class="campus-col">
+            <img src="../static/images/event2.jpg">
+            <div class="layer">
+                <h3>Pokhara</h3>
+            </div>
+        </div>
+        <div class="campus-col">
+            <img src="../static/images/event3.jpg">
+            <div class="layer">
+                <h3>Chitwan</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!--contact-->
+<section class="facilities">
+    <h1>Our Blogs</h1>
+    <p>"Dontae blood and inspire others to donate"</p>
+    <div class="row">
+        <div class="facilities-col">
+            <img src="../static/images/wedo1.jpg">
+            <h3>Become a Donor</h3>
+            <p>Blood donation is a practice of donating healthy blood to people in need. People also tend to store blood in blood banks for future use. It is a sign of humanity which helps in uniting people of different religion, caste, and creed. </p>
+        </div>
+        <div class="facilities-col">
+            <img src="../static/images/wedo2.jpg">
+            <h3>Why Give Blood ?</h3>
+            <p>Every 2 seconds, someone in the country is in urgent need of blood. It is crucial for surgeries, emergency patients, accidents and burn victims. Whether you donate whole blood, red cells, platelets or plasma, this lifesaving care starts with you making a generous donation.</p>
+        </div>
+        <div class="facilities-col">
+            <img src="../static/images/wedo3.jpg">
+            <h3>How Your Donation Helps</h3>
+            <p>Every day, patients of all ages are in need of blood transfusion. From premature babies to adults. Accidents and victims, Thalassemia patients, Sickle cell disease patients, Cancer patients, organ transplant patients, and heart surgery patients. In fact, some Thalassemia, Sickle cell and Cancer patients need blood on a daily basis.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<!----teamss-->
+<section class="teams">
+     <h1>Our Teams</h1>
+     <div class="row">
+         <div class="teams-col">
+             <h4>Birat Khadka</h4>
+             <small>Founder / CEO</small>
+             <img src="../static/images/1stperson.jpg">
+             <div class="social-box">
+                 <i class="fa fa-facebook"></i>
+                 <i class="fa fa-twitter"></i>
+                 <i class="fa fa-linkedin"></i>
+                 <i class="fa fa-instagram"></i>
+             </div>
+             <p>BE Computer Semester VI Project <br> Roll No.7 </p>
+         </div>
+         <div class="teams-col">
+            <h4>Bishal Subedi</h4>
+            <small>Bussiness Manager</small>
+            <img src="../static/images/2ndperson.jpg">
+            <div class="social-box">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-linkedin"></i>
+                <i class="fa fa-instagram"></i>
+            </div>
+            <p>BE Computer Semester VI Project <br> Roll No.8 </p>
+        </div>
+        <div class="teams-col">
+            <h4>Anil Ranabhat</h4>
+            <small>Marketing Head</small>
+            <img src="../static/images/3rdperson.jpg">
+            <div class="social-box">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-linkedin"></i>
+                <i class="fa fa-instagram"></i>
+            </div>
+            <p>BE Computer Semester VI Project <br> Roll No.32 </p>
+        </div>
+     </div>
+</section>
+
+
+
+<!-----call to action--->
+<section class="cta">
+    <h1>Enroll For Our Various Online Courses<br>Anywhere From The World</h1>
+    <a href="/contact" class="hero-btn">Contact Us</a>
+</section>
+
+
+<!------Footer-->
+<section class="footer">
+    <h4>About Us</h4>
+    <p>Bldonors is an innovative approach to address global health. We provide immediate access to blood donors all over Nepal, 24 hours a day, 7 days a week! Bldonors is one of several community organizations working together as a network that respond to disasters or emergency situations in an efficient manner.</p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-envelope"></i>
+    </div>
+    <p> Bldonor Foundation, Inc 
+        Made with <i class="fa fa-heart-o"></i> by Birat Khadka 
+        <i class="fab">@2020-2021 |</i>
+</section>
+
+<!----copyright---->
+
+
+<!---javascript for toggle Menu -->
+ <script>
+      var navLinks =  document.getElementById("navLinks");
+      function showMenu(){
+          navLinks.style.right = "0";
+      }
+      function hideMenu(){
+          navLinks.style.right = "-200px";
+      }
+ </script>
+</body>
+</html>

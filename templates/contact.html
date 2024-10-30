@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta property="og:title" content="Bldonors">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>
+            Bldonors
+        </title>
+         {% load static %}
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/static/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/static/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/static/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/static/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/static/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/static/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/static/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/static/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+<link rel="manifest" href="/static/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/static/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+    </head>
+
+  <body>
+  <section class="sub-header">
+      <nav>
+          <a href="/"><img src="../static/images/logo2.png"></a>
+          <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/donor">Donor</a></li>
+                <li><a href="/bloodreq">Request</a></li>
+                <li> <a href="/stock">Stock</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+          </div>
+          <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+<h1>Contact Us</h1>
+  </section>
+
+<!-------Contact Us Content----->
+<section class="location">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.8075654332283!2d84.44419133314231!3d27.69234191770842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994e4c950356f59%3A0x9f16980dc6bd57b4!2sUnited%20Technical%20College!5e0!3m2!1sen!2snp!4v1624725761828!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</section>
+<section class="contact">
+    <div class="row">
+                <div class="contact-left">
+                            <div>
+                                <i class="fa fa-home"></i>
+                                <span>
+                                    <h5>Bishal Chowk , UTECH College</h5>
+                                    <p>Bharatpur-11, Chitwan , NP</p>
+                                </span>
+                            </div>
+                            <div>
+                                <i class="fa fa-phone"></i>
+                                <span>
+                                    <h5>+977 9845108940</h5>
+                                    <p>Monday to Saturday , 10AM to 6OPM</p>
+                                </span>
+                            </div>
+                            <div>
+                                <i class="fa fa-envelope-o"></i>
+                                <span>
+                                    <h5>info@bldonors.com</h5>
+                                    <p>Email us your querry</p>
+                                </span>
+                            </div>
+                </div>
+            <div class = "col-sm-5 offset-1">
+                <h4 class="text-center alert alert-info">Contact Us</h4>
+               <form action="/contact" method="POST" class="comment-form">
+                 {% csrf_token %}
+                 {{form.as_p}}
+                 <button type="submit" class=" hero-btn red-btn">Contact</button>
+               </form>
+             <div>
+    </div>
+</section>
+
+
+  <!------Footer-->
+  <section class="footer">
+    <h4>About Us</h4>
+    <p>Bldonors is an innovative approach to address global health. We provide immediate access to blood donors all over Nepal, 24 hours a day, 7 days a week! Bldonors is one of several community organizations working together as a network that respond to disasters or emergency situations in an efficient manner.</p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-envelope"></i>
+    </div>
+    <p> Bldonor Foundation, Inc 
+        Made with <i class="fa fa-heart-o"></i> by Birat Khadka 
+        <i class="fab">@2020-2021 |</i>
+</section>
+
+
+<!---javascript for toggle Menu -->
+ <script>
+      var navLinks =  document.getElementById("navLinks");
+      function showMenu(){
+          navLinks.style.right = "0";
+      }
+      function hideMenu(){
+          navLinks.style.right = "-200px";
+      }
+ </script>
+</body>
+</html>

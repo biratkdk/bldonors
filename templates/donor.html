@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta property="og:title" content="Bldonors">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>
+            Bldonors
+        </title>
+         {% load static %}
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/static/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/static/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/static/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/static/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/static/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/static/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/static/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/static/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+<link rel="manifest" href="/static/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/static/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+    </head>
+  <body>
+  <section class="sub-header">
+      <nav>
+          <a href="/"><img src="../static/images/logo2.png"></a>
+          <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/donor">Donor</a></li>
+                <li><a href="/bloodreq">Request</a></li>
+                <li> <a href="/stock">Stock</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+          </div>
+          <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+<h1>Donate Blood</h1>
+  </section>
+
+  <!---eligible section-->
+<section class="eli">
+<div class="row">
+<div class="eli-col">
+<h2>Before Donating Please Read The Eligible Form !!
+<a href="/eligible" class="blue-btn">Eligibility</a></h2>
+</div>
+</div>
+</section>
+
+  <!-------donor page Content----->
+  <section class = "donor-content">
+  <div class="row">
+       <div class="donor-left">
+         <h4 class="text-center alert alert-info">Donate Blood</h4>
+          <form action="/donor" method="POST" class="comment-form">
+            {% csrf_token %}
+            {{form.as_p}}
+            <p>By creating an account you agree to our <a href="/terms">Terms & Privacy</a></p>
+             <button class="hero-btn red-btn">Submit</button>
+          </form>
+       </div>
+       <!----view section-->
+       <div class="col-sm-9">
+         <h4 class="text-center alert alert-info">Show donor detials</h2>
+          {% if dnr %}
+            <table class="table table-hover">
+             <thead>
+               <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Gender</th>
+                  <th scope="col">Blood Group</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
+               </tr>
+             </thead>
+              <tbody>
+                 {% for dn in dnr %}
+                    <tr>
+                      <th scope="row">{{ dn.id}}</th>
+                      <td>{{dn.name}}</td>
+                      <td>{{dn.email}}</td>
+                      <td>{{dn.phone}}</td>
+                      <td>{{dn.address}}</td>
+                      <td>{{dn.age}}</td>
+                      <td>{{dn.quantity}}</td>
+                      <td>{{dn.gender}}</td>
+                      <td>{{dn.blood_group}}</td>
+                      <td>
+                          <a href="{% url 'updatednr' dn.id %}" class="btn btn-warning btn-sm">Edit</a>
+                       </td>
+                       <td>
+                        <form action = "{% url 'deletednr' dn.id %}" method ="POST" class="d-inline">
+                          {% csrf_token %}
+                          <input type= "submit"  class ="btn btn-danger btn-sm" value="Delete">
+                        </form>
+                       </td>
+                    </tr>
+                  {% endfor %}
+               </tbody>
+            </table>
+           {% else  %}
+           <h4>No records avaiable</h4>   
+         {% endif %}
+      </div>
+   </div>
+</section>
+
+
+
+
+
+
+  <!------Footer-->
+  <section class="footer">
+    <h4>About Us</h4>
+    <p>Bldonors is an innovative approach to address global health. We provide immediate access to blood donors all over Nepal, 24 hours a day, 7 days a week! Bldonors is one of several community organizations working together as a network that respond to disasters or emergency situations in an efficient manner.</p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-envelope"></i>
+    </div>
+    <p> Bldonor Foundation, Inc 
+        Made with <i class="fa fa-heart-o"></i> by Birat Khadka 
+        <i class="fab">@2020-2021 |</i>
+</section>
+
+
+
+<!---javascript for toggle Menu -->
+   <script>
+      var navLinks =  document.getElementById("navLinks");
+      function showMenu(){
+          navLinks.style.right = "0";
+      }
+      function hideMenu(){
+          navLinks.style.right = "-200px";
+      }
+ </script>
+</body>
+</html>
